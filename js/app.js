@@ -1,3 +1,22 @@
+//Sprites are images at a location
+var Sprite = function(imageURL, x, y) {
+  this.imageURL = imageURL;
+  this.x = x;
+  this.y = y;
+};
+Sprite.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.imageURL), this.x, this.y);
+};
+
+//Agents can move around
+var Agent = function(imageURL, x, y, speed) {
+  Sprite.call(this, imageURL, x, y);
+  this.speed = speed;
+};
+Agent.prototype = Object.create(Sprite.prototype);
+Agent.prototype.constructor = Agent;
+
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -24,12 +43,31 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var Player = function(x, y, speed) {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+    Agent.call(this, 'images/char-boy.png', x, y, speed);
+};
+Player.prototype = Object.create(Agent.prototype);
+Player.prototype.constructor = Player;
 
+Player.prototype.update = function() {
+
+};
+
+Player.prototype.render = function() {
+
+};
+
+Player.prototype.handleInput = function() {
+
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+var allEnemies = [];
+var player = new Player(202.5, 383, 50);
 
 
 // This listens for key presses and sends the keys to your
