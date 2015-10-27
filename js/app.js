@@ -4,9 +4,6 @@ var Sprite = function(imageURL, x, y) {
   this.x = x;
   this.y = y;
 };
-Sprite.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.imageURL), this.x, this.y);
-};
 
 //Agents can move around
 var Agent = function(imageURL, x, y, speed) {
@@ -37,7 +34,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.imageURL), this.x, this.y);
 };
 
 // Now write your own player class
@@ -56,11 +53,23 @@ Player.prototype.update = function() {
 };
 
 Player.prototype.render = function() {
-
+  ctx.drawImage(Resources.get(this.imageURL), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-
+Player.prototype.handleInput = function(keyPress) {
+  if (keyPress == 'left') {
+      player.x -= player.speed;
+  }
+  if (keyPress == 'up') {
+      player.y -= player.speed - 20;
+  }
+  if (keyPress == 'right') {
+      player.x += player.speed;
+  }
+  if (keyPress == 'down') {
+      player.y += player.speed - 20;
+  }
+  console.log('keyPress is: ' + keyPress);
 };
 
 // Now instantiate your objects.
