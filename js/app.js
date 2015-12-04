@@ -1,3 +1,6 @@
+//Strict Mode
+"use strict";
+
 //Sprites are images at a location
 var Sprite = function(imageURL, x, y) {
   this.imageURL = imageURL;
@@ -23,14 +26,11 @@ Enemy.prototype.constructor = Enemy;
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    //if the enemy crosses off screen, reset its position. Otherwise, it keeps running.
     if(this.x <= 550){
         this.x += this.speed * dt;
-    }else{
+    } else {
         this.x = -2;
     }
-
-    //If the player comes within 30px of an enemy's x and y coordinates, reset the game
     if(player.x >= this.x - 35 && player.x <= this.x + 35){
         if(player.y >= this.y - 35 && player.y <= this.y + 35){
             player.reset();
@@ -53,7 +53,7 @@ Player.prototype = Object.create(Agent.prototype);
 Player.prototype.constructor = Player;
 Player.prototype.update = function() {
   if(this.y < 25) {
-        player.reset();
+        this.reset();
   }
 };
 
@@ -63,23 +63,23 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPress) {
   if (keyPress == 'left') {
-      player.x -= player.speed;
+      this.x -= this.speed;
   }
   if (keyPress == 'up') {
-      player.y -= player.speed - 20;
+      this.y -= this.speed - 20;
   }
   if (keyPress == 'right') {
-      player.x += player.speed;
+      this.x += this.speed;
   }
   if (keyPress == 'down') {
-      player.y += player.speed - 20;
+      this.y += this.speed - 20;
   }
   console.log('keyPress is: ' + keyPress);
 };
 
 Player.prototype.reset = function() {
-  player.x = 210;
-  player.y = 420;
+  this.x = 210;
+  this.y = 420;
 };
 
 function randomSpeed() {

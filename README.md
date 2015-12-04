@@ -1,6 +1,12 @@
-frontend-nanodegree-arcade-game
+Frogger Game
 ===============================
+By John Clema
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+What is this?
+This is a simple clone of the classic [frogger game](https://en.wikipedia.org/wiki/Frogger)
 
-for self-checking their submission.
+How to run
+
+How to play
+
+How to Contribute
