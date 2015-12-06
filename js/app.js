@@ -124,8 +124,8 @@ function randomSpeed() {
 }
 
 function enemies() {
-  for (var i = 0; i < allEnemies.length; i++) {
-    allEnemies.push(new Enemy(-5, 60 * i + 1, randomSpeed()));
+  for (var i = 0; i < 4; i++) {
+    allEnemies.push(new Enemy(-5, 60 * (i + 1), randomSpeed()));
   }
 }
 
